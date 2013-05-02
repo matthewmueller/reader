@@ -1,0 +1,37 @@
+#!/usr/bin/env node
+
+var nom = require('nom'),
+    join = require('path').join,
+    args = process.argv.slice(2);
+
+if(!args[0]) {
+  console.log('Usage: read <url>');
+  process.exit(0);
+}
+
+var root = 'http://readability.com/',
+    query = 'read?url=' + encodeURIComponent(args[0]),
+    url = root + query;
+
+// Selectors
+var iframe = '#read-frame',
+    content = '#container .entry-content';
+
+
+nom(url, function(err, $) {
+  if(err) throw new Error(err);
+
+  // Article source
+  var src = $(iframe).attr('src');
+
+  src = (src[0] === '/') ? src.substring(1) : src;
+
+  url = root + src;
+
+  nom(url, function(err, $) {
+    if(err) throw new Error(err);
+    var title = $('<h1>').text($('.entry-title').text());
+    console.log($(content).prepend(title).html());
+    process.exit(0);
+  });
+});

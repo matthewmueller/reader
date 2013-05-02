@@ -1,0 +1,22 @@
+{
+  "name": "reader2",
+  "version": "0.0.1",
+  "description": "readability",
+  "main": "index.js",
+  "dependencies": {
+    "nom": "~0.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin" : {
+    "reader": "bin/reader"
+  },
+  "repository": "",
+  "keywords": [
+    "readability"
+  ],
+  "author": "Matthew Mueller",
+  "license": "MIT"
+}
