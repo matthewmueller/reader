@@ -12,5 +12,5 @@ Extract content from readability on the command line.
 
 ## Example
 
-    reader http://mat.io/missing-javascript-functions
+    reader http://mat.io/missing-javascript-functions > doc.html
 
